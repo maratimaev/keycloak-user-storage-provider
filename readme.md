@@ -44,8 +44,8 @@ client_secret   1
 Для настроки keycloak аутентификации надо добавить в рест клиент 
 ### в pom.xml
 
-<pre>
-```        <dependency>
+
+        <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-security-adapter</artifactId>
             <version>8.0.2</version>
@@ -57,7 +57,7 @@ client_secret   1
             <type>pom</type>
         </dependency>
         
-  <dependencyManagement>
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.keycloak.bom</groupId>
@@ -67,9 +67,10 @@ client_secret   1
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>
- ```   
- </pre>
+     </dependencyManagement>
+   
+ 
+
 ### В SecurityConfig.java
 
 @KeycloakConfiguration
