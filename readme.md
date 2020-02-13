@@ -6,11 +6,11 @@
 ### Для получения JWT токена необходимо сделать POST запрос на keycloak
 http://localhost:8180/auth/realms/(realm)/protocol/openid-connect/token
 с заполнением полей для x-www-form-urlencoded в Postman
-client_id       login-app           (client)
+`client_id       login-app           (client)
 username        Katie.Washington
 password        123
 grant_type      password
-client_secret   1
+client_secret   1`
 
 ### Полученный access_token используется для REST запросов 
 `{
