@@ -1,9 +1,9 @@
 # A custom Keycloak User Storage Provider
 
-Пример реализации адаптера для проверки пользователей из внешнего хранилища.
+### Пример реализации адаптера для проверки пользователей из внешнего хранилища.
 Сервер аутентификации oauth2 Keycloak
 
-Для получения JWT токена необходимо сделать POST запрос на keycloak
+### Для получения JWT токена необходимо сделать POST запрос на keycloak
 http://localhost:8180/auth/realms/(realm)/protocol/openid-connect/token
 с заполнением полей для x-www-form-urlencoded в Postman
 client_id       login-app           (client)
@@ -12,7 +12,7 @@ password        123
 grant_type      password
 client_secret   1
 
-Полученный access_token используется для REST запросов 
+### Полученный access_token используется для REST запросов 
 {
     "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyUEY4c1NaTFRqbVBDcktqOVJNdG5OMEN4YUJ3dVJkYTRqTlFNMVNxM2F3In0.eyJqdGkiOiI3MmJhODAzZi1jNzk0LTQ3MGYtYTIwNS01MjdlM2ZmOWFmYWQiLCJleHAiOjE1ODE1ODA0NDMsIm5iZiI6MCwiaWF0IjoxNTgxNTgwMTQzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvU3ByaW5nS2V5Q2xvYWNrIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImY6Yzc5NjVjYmEtNDFjNy00NDJhLWI0NmQtZGI5M2YyNzU0MTI2OjEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJsb2dpbi1hcHAiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJlOGM1OTI2ZC01NDllLTRkNjgtYWYyNy05ODEwMTVkZjAxMzUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLYXRpZSBXYXNoaW5ndG9uIiwicHJlZmVycmVkX3VzZXJuYW1lIjoia2F0aWUud2FzaGluZ3RvbiIsImdpdmVuX25hbWUiOiJLYXRpZSIsImZhbWlseV9uYW1lIjoiV2FzaGluZ3RvbiIsImVtYWlsIjoia2F0aWUud2FzaGluZ3RvbkBleGFtcGxlLmNvbSJ9.dCd75knqKwk-dgAWFI4kGlHfeWmWUxobmiGigiai9R3c0e09_PbsadnUpC4jqQojet3ocOrUXGIndW3IF3W4j5at--bQhkENg8H8fPsXYseHqjQtmeB8JAfskDa64y6vaeOhMkjnBJDN4as-RgEJ3xplk9QI-DrlkI-gSAxgHirk2p-7CcVCfgnedOug9dNXyOw1BqMJ3Q8B54CrFzHiU0d2MNsC20SyMEf8CfT4WiynhjV6h-iAbEiDbgfd265p6wu-mqk2xves3x7wBFyeHK7W3siYIsu-Xo3GGrTrgc_2A5YsR-J1HQk7zjjf5XKiAHxtaHCdDTaGlDej0ShxOg",
     "expires_in": 300,
