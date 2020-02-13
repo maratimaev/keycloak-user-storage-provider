@@ -4,15 +4,18 @@
 Сервер аутентификации oauth2 Keycloak
 
 ### Для получения JWT токена необходимо сделать POST запрос на keycloak
-http://localhost:8180/auth/realms/(realm)/protocol/openid-connect/token
-с заполнением полей для x-www-form-urlencoded в Postman
-`client_id       login-app           (client)
-username        Katie.Washington
-password        123
-grant_type      password
-client_secret   1`
+http://localhost:8180/auth/realms/(realm)/protocol/openid-connect/token  
+с заполнением полей для x-www-form-urlencoded в Postman  
+<pre>
+client_id       login-app           (client)  
+username        Katie.Washington  
+password        123  
+grant_type      password  
+client_secret   1  
+</pre>
 
 ### Полученный access_token используется для REST запросов 
+<pre>
 `{
     "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJyUEY4c1NaTFRqbVBDcktqOVJNdG5OMEN4YUJ3dVJkYTRqTlFNMVNxM2F3In0.eyJqdGkiOiI3MmJhODAzZi1jNzk0LTQ3MGYtYTIwNS01MjdlM2ZmOWFmYWQiLCJleHAiOjE1ODE1ODA0NDMsIm5iZiI6MCwiaWF0IjoxNTgxNTgwMTQzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvU3ByaW5nS2V5Q2xvYWNrIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImY6Yzc5NjVjYmEtNDFjNy00NDJhLWI0NmQtZGI5M2YyNzU0MTI2OjEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJsb2dpbi1hcHAiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJlOGM1OTI2ZC01NDllLTRkNjgtYWYyNy05ODEwMTVkZjAxMzUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLYXRpZSBXYXNoaW5ndG9uIiwicHJlZmVycmVkX3VzZXJuYW1lIjoia2F0aWUud2FzaGluZ3RvbiIsImdpdmVuX25hbWUiOiJLYXRpZSIsImZhbWlseV9uYW1lIjoiV2FzaGluZ3RvbiIsImVtYWlsIjoia2F0aWUud2FzaGluZ3RvbkBleGFtcGxlLmNvbSJ9.dCd75knqKwk-dgAWFI4kGlHfeWmWUxobmiGigiai9R3c0e09_PbsadnUpC4jqQojet3ocOrUXGIndW3IF3W4j5at--bQhkENg8H8fPsXYseHqjQtmeB8JAfskDa64y6vaeOhMkjnBJDN4as-RgEJ3xplk9QI-DrlkI-gSAxgHirk2p-7CcVCfgnedOug9dNXyOw1BqMJ3Q8B54CrFzHiU0d2MNsC20SyMEf8CfT4WiynhjV6h-iAbEiDbgfd265p6wu-mqk2xves3x7wBFyeHK7W3siYIsu-Xo3GGrTrgc_2A5YsR-J1HQk7zjjf5XKiAHxtaHCdDTaGlDej0ShxOg",
     "expires_in": 300,
@@ -23,7 +26,7 @@ client_secret   1`
     "session_state": "e8c5926d-549e-4d68-af27-981015df0135",
     "scope": "email profile"
 }`
-
+</pre>
 
 ## Deployment
 
@@ -33,7 +36,7 @@ client_secret   1`
 
 ## Debug
 
-Для запуска keycloak в режиме дебага необходимо использовать 
+Для запуска keycloak в режиме дебага необходимо использовать  
 `keycloak-8.0.2\bin>standalone.sh -Djboss.socket.binding.port-offset=100 --debug`
 порт 8787
 
@@ -41,7 +44,8 @@ client_secret   1`
 Для настроки keycloak аутентификации надо добавить в рест клиент 
 ### в pom.xml
 
-        <dependency>
+<pre>
+```        <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-security-adapter</artifactId>
             <version>8.0.2</version>
@@ -64,7 +68,8 @@ client_secret   1`
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+ ```   
+ </pre>
 ### В SecurityConfig.java
 
 @KeycloakConfiguration
@@ -132,7 +137,8 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
 
 ### в src/main/webapp/WEB-INF/keycloak.json
 выгружен из Clients->login-app->Installation
-
+<pre>
+`
 {
   "realm": "SpringKeyCloack",
   "auth-server-url": "http://localhost:8180/auth/",
@@ -140,4 +146,5 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
   "resource": "login-app",
   "public-client": true,
   "confidential-port": 0
-}
+}`
+</pre>
