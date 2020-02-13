@@ -181,7 +181,7 @@ public class DemoUserStorageProvider implements UserStorageProvider,
 
     logger.errorv("search for users with params: realm={0} params={1}", realm.getId(), params);
 
-    return null;
+    return repository.getAllUsers().stream().map(user -> new UserAdapter(session, realm, model, user)).collect(Collectors.toList());
   }
 
   @Override
@@ -189,7 +189,7 @@ public class DemoUserStorageProvider implements UserStorageProvider,
 
     logger.errorv("search for users with params: realm={0} params={1} firstResult={2} maxResults={3}", realm.getId(), params, firstResult, maxResults);
 
-    return null;
+    return searchForUser(params, realm);
   }
 
   @Override
